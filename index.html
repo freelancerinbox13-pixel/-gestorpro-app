@@ -110,43 +110,44 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 2: HORARIO / AGENDA AVANZADA ================= -->
+        <!-- ================= MÓDULO 2: HORARIO / AGENDA AVANZADA (OPERATIVO) ================= -->
         <section id="tab-agenda" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
                     <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
                     <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
+                <!-- Selector de vistas interactivo -->
                 <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
-                    <button class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs">Columna</button>
-                    <button class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800">Día</button>
-                    <button class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800">Lista</button>
+                    <button onclick="cambiarVistaAgenda('columna')" id="btn-v-columna" class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer">Columna</button>
+                    <button onclick="cambiarVistaAgenda('dia')" id="btn-v-dia" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer">Día</button>
+                    <button onclick="cambiarVistaAgenda('lista')" id="btn-v-lista" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer">Lista</button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4 md:col-span-1">
-                    <button onclick="alert('Ventana para crear nueva reserva')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2 cursor-pointer">
+                    <button onclick="abrirNuevaReserva()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2 cursor-pointer">
                         <i class="fa-solid fa-plus"></i>
                         <span>NUEVA RESERVA</span>
                     </button>
-                    <div class="flex items-center justify-between p-3 bg-teal-50/50 border border-teal-100 rounded-2xl">
+                    <div class="flex items-center justify-between p-3 bg-teal-50/50 border border-teal-100 rounded-2xl cursor-pointer" onclick="toggleCalendarSync()">
                         <span class="text-xs font-semibold text-teal-900">Sincronizar G. Calendar</span>
-                        <input type="checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600">
+                        <input type="checkbox" id="sync-calendar-checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600 pointer-events-none">
                     </div>
                     <div class="border-t border-slate-100 pt-3">
                         <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Filtros de Citas</p>
                         <div class="space-y-2">
                             <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
-                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600">
+                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600" onchange="filtrarCitas('nuevos', this.checked)">
                                 <span>Nuevos clientes</span>
                             </label>
                             <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
-                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600">
+                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600" onchange="filtrarCitas('nopagados', this.checked)">
                                 <span>No pagados</span>
                             </label>
                             <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
-                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600">
+                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600" onchange="filtrarCitas('enlinea', this.checked)">
                                 <span>Reservas en línea</span>
                             </label>
                         </div>
@@ -154,7 +155,7 @@
                 </div>
 
                 <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
-                    <div class="min-w-[300px]">
+                    <div class="min-w-[300px]" id="contenedor-agenda-vista">
                         <div class="grid grid-cols-4 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
                             <span>3/11 (mar)</span>
                             <span>4/11 (mié)</span>
@@ -165,7 +166,7 @@
                             <div class="flex items-center border-b border-slate-50 pb-2">
                                 <span class="w-12 font-semibold">09:00</span>
                                 <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px]">Corte (María)</div>
+                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px] cursor-pointer hover:bg-teal-100 transition" onclick="alert('Cita: Corte con María (09:00)')">Corte (María)</div>
                                     <div class="h-8 bg-slate-50 rounded-lg"></div>
                                     <div class="h-8 bg-slate-50 rounded-lg"></div>
                                     <div class="h-8 bg-slate-50 rounded-lg"></div>
@@ -186,18 +187,6 @@
                 </div>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">MR</div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">María Rodríguez</h4>
-                            <p class="text-xs text-slate-400">Color: Melena 7.1 + Oxidante 20v</p>
-                        </div>
-                    </div>
-                    <span class="text-xs bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-medium">35.00 €</span>
-                </div>
-            </div>
         </section>
 
         <!-- ================= MÓDULO 4: CAJA / TPV ================= -->
@@ -208,27 +197,6 @@
                     <p class="text-xs text-slate-500">Cobro rápido de servicios</p>
                 </div>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
-            </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio / Producto</label>
-                    <select class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
-                        <option>Corte Mujer + Peinado (35€)</option>
-                        <option>Corte de Barba Clásico (15€)</option>
-                        <option>Trabajo Técnico Color (60€)</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Método de Pago</label>
-                    <div class="grid grid-cols-3 gap-2">
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100">Efectivo</button>
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100">Tarjeta</button>
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100">Bizum</button>
-                    </div>
-                </div>
-                <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm cursor-pointer">
-                    Registrar Cobro
-                </button>
             </div>
         </section>
 
@@ -273,28 +241,6 @@
                 </div>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
-            <div class="space-y-3">
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                    <div>
-                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Plazo: 30 Días</span>
-                        <h4 class="font-bold text-sm text-slate-800 mt-1">Alquiler del Local</h4>
-                        <p class="text-xs text-slate-400">Meta: 600.00 € | Aporte porcentual diario</p>
-                    </div>
-                    <div class="w-full md:w-40 bg-slate-100 rounded-full h-2.5">
-                        <div class="bg-amber-500 h-2.5 rounded-full" style="width: 35%"></div>
-                    </div>
-                </div>
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                    <div>
-                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">Plazo: 90 Días (Trimestral)</span>
-                        <h4 class="font-bold text-sm text-slate-800 mt-1">Impuestos / IVA</h4>
-                        <p class="text-xs text-slate-400">Meta: 450.00 € | Retención de caja activa</p>
-                    </div>
-                    <div class="w-full md:w-40 bg-slate-100 rounded-full h-2.5">
-                        <div class="bg-purple-600 h-2.5 rounded-full" style="width: 50%"></div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- ================= MÓDULO 10: AJUSTES ================= -->
@@ -303,14 +249,11 @@
                 <h3 class="font-bold text-slate-900">Ajustes del Sistema</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-6">
-                <p class="text-xs text-slate-500">Configuración de estilistas, métodos de pago y datos maestros.</p>
-            </div>
         </section>
 
     </main>
 
-    <!-- SCRIPT DE NAVEGACIÓN -->
+    <!-- SCRIPT DE NAVEGACIÓN Y FUNCIONALIDAD DE AGENDA -->
     <script>
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => {
@@ -321,6 +264,42 @@
                 target.classList.remove('hidden');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cambiarVistaAgenda(vista) {
+            // Cambiar estilos de los botones de vista
+            ['columna', 'dia', 'lista'].forEach(v => {
+                const btn = document.getElementById('btn-v-' + v);
+                if(btn) {
+                    if(v === vista) {
+                        btn.className = "px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer";
+                    } else {
+                        btn.className = "px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer";
+                    }
+                }
+            });
+            // Acción simulada según la vista seleccionada
+            if(vista === 'dia') {
+                alert("Cambiado a Vista Diaria");
+            } else if(vista === 'lista') {
+                alert("Cambiado a Vista de Lista de Reservas");
+            }
+        }
+
+        function abrirNuevaReserva() {
+            alert("Abriendo formulario interactivo para Nueva Reserva / Cita");
+        }
+
+        function toggleCalendarSync() {
+            const chk = document.getElementById('sync-calendar-checkbox');
+            if(chk) {
+                chk.checked = !chk.checked;
+                alert("Sincronización con Google Calendar: " + (chk.checked ? "Activada" : "Desactivada"));
+            }
+        }
+
+        function filtrarCitas(tipo, estado) {
+            console.log("Filtro aplicado:", tipo, "Estado:", estado);
         }
     </script>
 </body>
