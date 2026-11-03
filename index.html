@@ -251,3 +251,256 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestorPro - Gestión de Peluquería & Barbería</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Ocultar barra de desplazamiento manteniendo funcionalidad */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-teal-50 via-slate-50 to-pink-50 text-slate-800 font-sans antialiased min-h-screen pb-20">
+
+    <!-- HEADER / NAVEGACIÓN SUPERIOR -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="switchTab('dashboard')">
+                <i class="fa-solid fa-scissors text-teal-400 text-xl"></i>
+                <span class="font-bold text-lg tracking-wide">GestorPro</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-xs bg-teal-500/20 text-teal-300 px-2.5 py-1 rounded-full font-medium border border-teal-500/30">
+                    Modo Pro Autónomo
+                </span>
+                <button onclick="switchTab('dashboard')" class="text-slate-400 hover:text-white transition text-sm ml-2" title="Ir al Inicio">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="max-w-4xl mx-auto px-4 py-6">
+
+        <!-- SECCIÓN 1: DASHBOARD (ESTILO MENÚ DE ICONOS) -->
+        <section id="tab-dashboard" class="tab-content space-y-6">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight">Menú Principal</h2>
+                <p class="text-xs text-slate-500 mt-1">Selecciona una sección para gestionar tu negocio</p>
+            </div>
+
+            <!-- Cuadrícula de Iconos Estilo App Móvil -->
+            <div class="grid grid-cols-3 gap-4 md:gap-6">
+                <!-- Horario / Agenda -->
+                <button onclick="switchTab('agenda')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Horario</span>
+                </button>
+
+                <!-- Clientes / Fichas -->
+                <button onclick="switchTab('clientes')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Clientes</span>
+                </button>
+
+                <!-- Finalizar Compra / TPV -->
+                <button onclick="switchTab('caja')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-cash-register"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Finalizar Compra</span>
+                </button>
+
+                <!-- Catálogo de Servicios -->
+                <button onclick="alert('Módulo de Catálogo de Servicios y Precios')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Catálogo</span>
+                </button>
+
+                <!-- Estadísticas / Informes -->
+                <button onclick="alert('Módulo de Estadísticas y Rendimiento')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Estadísticas</span>
+                </button>
+
+                <!-- Marketing / Recordatorios -->
+                <button onclick="alert('Módulo de Marketing y Avisos')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Marketing</span>
+                </button>
+
+                <!-- Informes de Caja -->
+                <button onclick="alert('Módulo de Informes Financieros')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Informes</span>
+                </button>
+
+                <!-- Gastos Fijos y Contabilidad (Especial Autónomo) -->
+                <button onclick="switchTab('finanzas')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Contabilidad & Fijos</span>
+                </button>
+
+                <!-- Ayuda / Configuración -->
+                <button onclick="alert('Configuración y Ajustes de GestorPro')" class="bg-white/80 backdrop-blur-sm p-5 rounded-3xl shadow-sm hover:shadow-md border border-white/60 transition flex flex-col items-center text-center group">
+                    <div class="w-14 h-14 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-700">Ajustes</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: AGENDA HÍBRIDA -->
+        <section id="tab-agenda" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="font-bold text-lg text-slate-900">Agenda de Citas (Horario)</h2>
+                    <p class="text-xs text-slate-500">Bloques fijos y registro rápido de citas al vuelo.</p>
+                </div>
+                <div class="flex gap-2 w-full md:w-auto">
+                    <button onclick="switchTab('dashboard')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-semibold">← Volver</button>
+                    <button class="bg-teal-600 text-white px-4 py-2 rounded-xl text-xs font-semibold">+ Cita Rápida</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-12">
+                <i class="fa-solid fa-calendar-days text-slate-300 text-4xl mb-3"></i>
+                <p class="text-slate-500 text-sm">Vista de calendario interactiva lista para conectar con Google Calendar.</p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CLIENTES Y FICHAS TÉCNICAS -->
+        <section id="tab-clientes" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="font-bold text-lg text-slate-900">Fichas de Clientes</h2>
+                    <p class="text-xs text-slate-500">Historiales, fórmulas de color, tratamientos y contacto.</p>
+                </div>
+                <div class="flex gap-2 w-full md:w-auto">
+                    <button onclick="switchTab('dashboard')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-semibold">← Volver</button>
+                    <button class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-semibold">+ Nuevo Cliente</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center font-bold text-slate-600">MR</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-800">María Rodríguez</h4>
+                            <p class="text-xs text-slate-400">Tel: 600 123 456 | Color: Melena 7.1 + Oxidante 20v</p>
+                        </div>
+                    </div>
+                    <span class="text-xs bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-medium">Última cita: Ayer</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: CAJA Y TPV (FINALIZAR COMPRA) -->
+        <section id="tab-caja" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2 class="font-bold text-lg text-slate-900">Finalizar Compra (TPV)</h2>
+                        <p class="text-xs text-slate-500">Selecciona servicio, aplica descuento y registra el cobro.</p>
+                    </div>
+                    <button onclick="switchTab('dashboard')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-semibold">← Volver</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 border border-slate-100 rounded-2xl bg-slate-50">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio / Producto</label>
+                        <select class="w-full p-2.5 rounded-xl border border-slate-200 bg-white text-sm">
+                            <option>Corte Mujer + Peinado (35€)</option>
+                            <option>Corte de Barba Clásico (15€)</option>
+                            <option>Trabajo Técnico Color (60€)</option>
+                        </select>
+                    </div>
+                    <div class="p-4 border border-slate-100 rounded-2xl bg-slate-50">
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Método de Pago</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button class="py-2 bg-white border border-slate-200 rounded-lg text-xs font-medium hover:bg-slate-100">Efectivo</button>
+                            <button class="py-2 bg-white border border-slate-200 rounded-lg text-xs font-medium hover:bg-slate-100">Tarjeta</button>
+                            <button class="py-2 bg-white border border-slate-200 rounded-lg text-xs font-medium hover:bg-slate-100">Bizum</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm">
+                    Finalizar Cobro e Ingresar en Caja
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: GASTOS FIJOS Y CONTABILIDAD -->
+        <section id="tab-finanzas" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2 class="font-bold text-lg text-slate-900">Gastos Fijos y Plazos (Autónomo)</h2>
+                        <p class="text-xs text-slate-500">Configura plazos personalizados (15 días, 3 meses, etc.) para calcular el ahorro diario.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="switchTab('dashboard')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-semibold">← Volver</button>
+                        <button class="bg-slate-900 text-white px-3 py-2 rounded-xl text-xs font-semibold">+ Gasto Fijo</button>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="p-4 border border-slate-100 rounded-2xl bg-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Plazo: 30 Días</span>
+                            <h4 class="font-bold text-sm text-slate-800 mt-1">Alquiler del Local</h4>
+                            <p class="text-xs text-slate-400">Meta: 600.00 € | Apartado diario estimado: 20.00 €/día</p>
+                        </div>
+                        <div class="w-full md:w-48 bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-amber-500 h-2.5 rounded-full" style="width: 35%"></div>
+                        </div>
+                    </div>
+                    <div class="p-4 border border-slate-100 rounded-2xl bg-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">Plazo: 90 Días (Trimestral)</span>
+                            <h4 class="font-bold text-sm text-slate-800 mt-1">Impuestos / IVA</h4>
+                            <p class="text-xs text-slate-400">Meta: 450.00 € | Cálculo porcentual sobre caja activa</p>
+                        </div>
+                        <div class="w-full md:w-48 bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 50%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SCRIPT DE NAVEGACIÓN ENTRE PESTAÑAS -->
+    <script>
+        function switchTab(tabId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Mostrar la sección seleccionada
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            // Subir arriba suavemente
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
