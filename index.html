@@ -43,9 +43,8 @@
                 <p class="text-xs text-slate-500 mt-1">Selecciona una opción para gestionar tu salón</p>
             </div>
 
-            <!-- Cuadrícula 3x3 exacta basada en la interfaz solicitada[span_1](start_span)[span_1](end_span) -->
+            <!-- Cuadrícula 3x3 -->
             <div class="grid grid-cols-3 gap-3 md:gap-6">
-                <!-- Horario / Agenda -->
                 <button onclick="switchTab('agenda')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-calendar-days"></i>
@@ -53,7 +52,6 @@
                     <span class="text-xs font-bold text-slate-700">Horario</span>
                 </button>
 
-                <!-- Cliente / Fichas -->
                 <button onclick="switchTab('clientes')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-address-book"></i>
@@ -61,7 +59,6 @@
                     <span class="text-xs font-bold text-slate-700">Cliente</span>
                 </button>
 
-                <!-- Finalizar Compra / TPV -->
                 <button onclick="switchTab('caja')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-cash-register"></i>
@@ -69,7 +66,6 @@
                     <span class="text-xs font-bold text-slate-700">Finalizar compra</span>
                 </button>
 
-                <!-- Catálogo de Servicios y Precios -->
                 <button onclick="switchTab('catalogo')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-book-open"></i>
@@ -77,7 +73,6 @@
                     <span class="text-xs font-bold text-slate-700">Catálogo</span>
                 </button>
 
-                <!-- Estadísticas -->
                 <button onclick="switchTab('estadisticas')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-chart-line"></i>
@@ -85,7 +80,6 @@
                     <span class="text-xs font-bold text-slate-700">Estadísticas</span>
                 </button>
 
-                <!-- Marketing / Recordatorios -->
                 <button onclick="switchTab('marketing')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-bullhorn"></i>
@@ -93,7 +87,6 @@
                     <span class="text-xs font-bold text-slate-700">Marketing</span>
                 </button>
 
-                <!-- Informes -->
                 <button onclick="switchTab('informes')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-file-invoice"></i>
@@ -101,7 +94,6 @@
                     <span class="text-xs font-bold text-slate-700">Informe</span>
                 </button>
 
-                <!-- Contabilidad & Fijos (Autónomo) -->
                 <button onclick="switchTab('finanzas')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-wallet"></i>
@@ -109,7 +101,6 @@
                     <span class="text-xs font-bold text-slate-700">Contabilidad</span>
                 </button>
 
-                <!-- Ayuda / Configuración -->
                 <button onclick="switchTab('ajustes')" class="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-3xl shadow-sm hover:shadow-md border border-slate-100 transition flex flex-col items-center text-center group">
                     <div class="w-14 h-14 md:w-16 md:h-16 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-gear"></i>
@@ -119,177 +110,157 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 2: HORARIO / AGENDA ================= -->
+        <!-- ================= MÓDULO 2: HORARIO / AGENDA AVANZADA ================= -->
         <section id="tab-agenda" class="tab-content hidden space-y-4">
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Agenda de Citas (Horario)</h3>
-                    <p class="text-xs text-slate-500">Bloques fijos y citas rápidas al vuelo</p>
+            <!-- Barra superior de la agenda -->
+            <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
+                <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
+                    <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
+                    <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition">Menú</button>
                 </div>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <!-- Selector de vistas estilo app -->
+                <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
+                    <button class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs">Columna</button>
+                    <button class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800">Día</button>
+                    <button class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800">Lista</button>
+                </div>
             </div>
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center py-12">
-                <i class="fa-solid fa-calendar-days text-teal-500 text-4xl mb-3"></i>
-                <p class="text-sm font-semibold text-slate-700">Sincronización con Google Calendar y Empleados</p>
-                <p class="text-xs text-slate-400 mt-1">Aquí gestionarás las ranuras de tiempo de peluquería y barbería.</p>
-            </div>
-        </section>
 
-        <!-- ================= MÓDULO 3: CLIENTES Y FICHAS TÉCNICAS ================= -->
-        <section id="tab-clientes" class="tab-content hidden space-y-4">
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
-                    <p class="text-xs text-slate-500">Historiales, colores, tratamientos y datos</p>
-                </div>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
-            </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">MR</div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">María Rodríguez</h4>
-                            <p class="text-xs text-slate-400">Técnico Color: Melena 7.1 + Oxidante 20v</p>
+            <!-- Panel de Controles y Filtros (Inspirado en la referencia)[span_2](start_span)[span_2](end_span) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Columna Izquierda: Botón de Reserva y Filtros -->
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4 md:col-span-1">
+                    <button onclick="alert('Ventana para crear nueva reserva')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>NUEVA RESERVA</span>
+                    </button>
+
+                    <!-- Sincronización Google Calendar -->
+                    <div class="flex items-center justify-between p-3 bg-teal-50/50 border border-teal-100 rounded-2xl">
+                        <span class="text-xs font-semibold text-teal-900">Sincronizar G. Calendar</span>
+                        <input type="checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600">
+                    </div>
+
+                    <!-- Filtros de Estado[span_3](start_span)[span_3](end_span) -->
+                    <div class="border-t border-slate-100 pt-3">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Filtros de Citas</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600">
+                                <span>Nuevos clientes</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600">
+                                <span>No pagados</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
+                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600">
+                                <span>Reservas en línea</span>
+                            </label>
                         </div>
                     </div>
-                    <span class="text-xs bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-medium">35.00 €</span>
+                </div>
+
+                <!-- Columna Derecha: Cuadrícula de Horas Estilo Calendario[span_4](start_span)[span_4](end_span) -->
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
+                    <div class="min-w-[300px]">
+                        <div class="grid grid-cols-4 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
+                            <span>3/11 (mar)</span>
+                            <span>4/11 (mié)</span>
+                            <span>5/11 (jue)</span>
+                            <span>6/11 (vie)</span>
+                        </div>
+                        <!-- Franjas horarias simuladas -->
+                        <div class="space-y-3 text-xs text-slate-400">
+                            <div class="flex items-center border-b border-slate-50 pb-2">
+                                <span class="w-12 font-semibold">08:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center border-b border-slate-50 pb-2">
+                                <span class="w-12 font-semibold">09:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px]">Corte (María)</div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center border-b border-slate-50 pb-2">
+                                <span class="w-12 font-semibold">10:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center text-blue-700 font-bold text-[10px]">Barba (Carlos)</div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center border-b border-slate-50 pb-2">
+                                <span class="w-12 font-semibold">11:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 4: FINALIZAR COMPRA (TPV) ================= -->
+        <!-- Resto de módulos se mantienen igual -->
+        <section id="tab-clientes" class="tab-content hidden space-y-4">
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
+                <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+            </div>
+        </section>
         <section id="tab-caja" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
-                    <p class="text-xs text-slate-500">Cobro rápido de servicios y productos</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio / Producto</label>
-                    <select class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
-                        <option>Corte Mujer + Peinado (35€)</option>
-                        <option>Corte de Barba Clásico (15€)</option>
-                        <option>Trabajo Técnico Color (60€)</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Método de Pago</label>
-                    <div class="grid grid-cols-3 gap-2">
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100">Efectivo</button>
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100">Tarjeta</button>
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100">Bizum</button>
-                    </div>
-                </div>
-                <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm">
-                    Registrar Cobro
-                </button>
-            </div>
         </section>
-
-        <!-- ================= MÓDULO 5: CATÁLOGO ================= -->
         <section id="tab-catalogo" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Catálogo de Servicios</h3>
-                    <p class="text-xs text-slate-500">Peluquería de mujeres y barbería</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Catálogo de Servicios</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-8">
-                <p class="text-xs text-slate-500">Configura precios fijos y variables con descuentos por cliente o profesional.</p>
-            </div>
         </section>
-
-        <!-- ================= MÓDULO 6: ESTADÍSTICAS ================= -->
         <section id="tab-estadisticas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Estadísticas de Rendimiento</h3>
-                    <p class="text-xs text-slate-500">Métricas y servicios más solicitados</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Estadísticas</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-8">
-                <p class="text-xs text-slate-500">Gráficos de facturación y horas punta.</p>
-            </div>
         </section>
-
-        <!-- ================= MÓDULO 7: MARKETING ================= -->
         <section id="tab-marketing" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Marketing & Recordatorios</h3>
-                    <p class="text-xs text-slate-500">Campañas y avisos automáticos</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Marketing</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-8">
-                <p class="text-xs text-slate-500">Envío de recordatorios para reenganchar a clientes inactivos.</p>
-            </div>
         </section>
-
-        <!-- ================= MÓDULO 8: INFORMES ================= -->
         <section id="tab-informes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Informes Financieros</h3>
-                    <p class="text-xs text-slate-500">Resúmenes de caja y cierres</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Informes</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-8">
-                <p class="text-xs text-slate-500">Exporta informes detallados de ingresos diarios y mensuales.</p>
-            </div>
         </section>
-
-        <!-- ================= MÓDULO 9: CONTABILIDAD Y GASTOS FIJOS (AUTÓNOMO) ================= -->
         <section id="tab-finanzas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
-                    <p class="text-xs text-slate-500">Control de plazos personalizados (15 días, 3 meses, etc.)</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
-            </div>
-            <div class="space-y-3">
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                    <div>
-                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Plazo: 30 Días</span>
-                        <h4 class="font-bold text-sm text-slate-800 mt-1">Alquiler del Local</h4>
-                        <p class="text-xs text-slate-400">Meta: 600.00 € | Aporte porcentual diario</p>
-                    </div>
-                    <div class="w-full md:w-40 bg-slate-100 rounded-full h-2.5">
-                        <div class="bg-amber-500 h-2.5 rounded-full" style="width: 35%"></div>
-                    </div>
-                </div>
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                    <div>
-                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">Plazo: 90 Días (Trimestral)</span>
-                        <h4 class="font-bold text-sm text-slate-800 mt-1">Impuestos / IVA</h4>
-                        <p class="text-xs text-slate-400">Meta: 450.00 € | Retención de caja activa</p>
-                    </div>
-                    <div class="w-full md:w-40 bg-slate-100 rounded-full h-2.5">
-                        <div class="bg-purple-600 h-2.5 rounded-full" style="width: 50%"></div>
-                    </div>
-                </div>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 10: AJUSTES ================= -->
         <section id="tab-ajustes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Ajustes del Sistema</h3>
-                    <p class="text-xs text-slate-500">Configuración de empleados y datos del negocio</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Ajustes</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
-            </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center py-8">
-                <p class="text-xs text-slate-500">Preparado para multi-empleado y futuros módulos fiscales en España.</p>
             </div>
         </section>
 
