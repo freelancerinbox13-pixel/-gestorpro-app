@@ -117,311 +117,176 @@
                     <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
                     <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
-                <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
-                    <button onclick="cambiarVistaAgenda('columna')" id="btn-v-columna" class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer transition">Columna</button>
-                    <button onclick="cambiarVistaAgenda('dia')" id="btn-v-dia" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition">Día</button>
-                    <button onclick="cambiarVistaAgenda('lista')" id="btn-v-lista" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition">Lista</button>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4 md:col-span-1">
-                    <button onclick="abrirModalReserva()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2 cursor-pointer">
-                        <i class="fa-solid fa-plus"></i>
-                        <span>NUEVA RESERVA</span>
-                    </button>
-                </div>
-
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
-                    <div id="vista-columna" class="min-w-[320px] space-y-2">
-                        <div class="grid grid-cols-5 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
-                            <span class="w-12">Hora</span>
-                            <span>3/11</span>
-                            <span>4/11</span>
-                            <span>5/11</span>
-                            <span>6/11</span>
-                        </div>
-                        <div class="space-y-2 text-xs text-slate-400">
-                            <div class="flex items-center border-b border-slate-50 pb-1.5">
-                                <span class="w-12 font-semibold text-[11px]">09:00</span>
-                                <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px] shadow-xs">Corte (María)</div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
         <!-- ================= MÓDULO 3: CLIENTES ================= -->
         <section id="tab-clientes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
-                    <p class="text-xs text-slate-500">Historiales y tratamientos</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
-            </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">MR</div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">María Rodríguez</h4>
-                            <p class="text-xs text-slate-400">Color: Melena 7.1 + Oxidante 20v</p>
-                        </div>
-                    </div>
-                    <span class="text-xs bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-medium">35.00 €</span>
-                </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 4: CAJA / TPV INTERACTIVO ================= -->
+        <!-- ================= MÓDULO 4: CAJA / TPV (ESTILO REFERENCIA EXACTO) ================= -->
         <section id="tab-caja" class="tab-content hidden space-y-4">
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
-                    <p class="text-xs text-slate-500">Cobro rápido de servicios vinculado a empleados</p>
-                </div>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
+            <!-- Barra superior del TPV -->
+            <div class="bg-teal-600 text-white p-4 rounded-3xl shadow-sm flex justify-between items-center">
+                <h3 class="font-bold text-base">Finalizar compra</h3>
+                <button onclick="switchTab('dashboard')" class="bg-teal-700 hover:bg-teal-800 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer transition">Menú</button>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio / Producto</label>
-                    <select id="tpv-servicio" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
-                        <option value="35">Corte Mujer + Peinado (35.00 €)</option>
-                        <option value="15">Corte de Barba Clásico (15.00 €)</option>
-                        <option value="60">Trabajo Técnico Color (60.00 €)</option>
-                    </select>
+            <!-- Botones superiores de artículos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-scissors"></i><span>Reserva</span>
+                </button>
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-user-clock"></i><span>Sin cita previa</span>
+                </button>
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-cart-shopping"></i><span>Productos</span>
+                </button>
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-gift"></i><span>Vale de regalo</span>
+                </button>
+            </div>
+
+            <!-- Tarjeta Principal de Facturación -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    <span>Elemento</span>
+                    <span>Precio</span>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Asignar a Empleado / Estilista</label>
-                    <select id="tpv-empleado" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
-                        <option>Admin / Manager Principal</option>
-                        <option>María Estilista</option>
-                    </select>
-                </div>
+                <!-- Datos del cliente y servicio seleccionado -->
+                <div class="space-y-3 border-b border-slate-100 pb-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs text-slate-400 font-semibold">Nombre</p>
+                            <p class="text-sm font-bold text-slate-800" id="tpv-cliente-nombre">Elizabeth Wilson</p>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Corte + Color</p>
+                        </div>
+                        <div class="text-right">
+                            <input type="number" id="tpv-precio-base" value="215.00" oninput="calcularTotalTPV()" class="w-24 p-1.5 text-right font-bold text-slate-800 border border-slate-200 rounded-xl text-sm bg-slate-50">
+                        </div>
+                    </div>
 
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Método de Pago</label>
-                    <div class="grid grid-cols-3 gap-2">
-                        <button type="button" onclick="seleccionarPago(this, 'Efectivo')" class="p-2.5 bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-bold cursor-pointer btn-pago transition">Efectivo</button>
-                        <button type="button" onclick="seleccionarPago(this, 'Tarjeta')" class="p-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer btn-pago transition">Tarjeta</button>
-                        <button type="button" onclick="seleccionarPago(this, 'Bizum')" class="p-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer btn-pago transition">Bizum</button>
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-slate-500 font-medium">Estilista: <strong class="text-slate-700" id="tpv-estilista-nombre">Patricia</strong></span>
+                        <span class="text-slate-400">2026-11-03 (10:00 - 11:30)</span>
                     </div>
                 </div>
 
-                <div class="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
-                    <span class="text-xs font-bold text-slate-600">Total a Cobrar:</span>
-                    <span class="text-base font-black text-emerald-600" id="tpv-total-display">35.00 €</span>
+                <!-- Descuentos, Tasas y Propina (Inspirado en tu foto)[span_7](start_span)[span_7](end_span) -->
+                <div class="space-y-3 border-b border-slate-100 pb-4 text-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 font-medium">Descuento Valor</span>
+                        <div class="flex items-center space-x-1">
+                            <span>-</span>
+                            <input type="number" id="tpv-descuento" value="15.00" oninput="calcularTotalTPV()" class="w-20 p-1 text-right border border-slate-200 rounded-lg bg-slate-50 font-medium">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 font-medium">Tasa / Impuesto (%)</span>
+                        <div class="flex items-center space-x-1">
+                            <span>-</span>
+                            <input type="number" id="tpv-tasa-porc" value="6.98" oninput="calcularTotalTPV()" class="w-20 p-1 text-right border border-slate-200 rounded-lg bg-slate-50 font-medium">
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 font-medium">Sugerencia Propina</span>
+                        <input type="number" id="tpv-propina" value="20.00" oninput="calcularTotalTPV()" class="w-20 p-1 text-right border border-slate-200 rounded-lg bg-slate-50 font-medium">
+                    </div>
                 </div>
 
-                <button onclick="registrarCobroTPV()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm cursor-pointer">
-                    Registrar Cobro y Finalizar
+                <!-- Total Calculado -->
+                <div class="p-4 bg-teal-50/60 border border-teal-100 rounded-2xl flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-teal-900 uppercase">Total a Pagar</span>
+                        <p class="text-[10px] text-teal-700" id="texto-impuestos">Impuestos incluidos</p>
+                    </div>
+                    <span class="text-xl font-black text-teal-900" id="tpv-total-final">220.00 €</span>
+                </div>
+
+                <!-- Pagador y Empleado selector -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Pagador</label>
+                        <input type="text" placeholder="Nombre del pagador" class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-slate-50">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Estilista Responsable</label>
+                        <select class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-slate-50 cursor-pointer">
+                            <option>Patricia</option>
+                            <option>James</option>
+                            <option>Linda</option>
+                            <option>Admin / Manager</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BARRA INFERIOR DE ACCIÓN (ESTILO IDÉNTICO A TU FOTO)[span_8](start_span)[span_8](end_span) -->
+            <div class="grid grid-cols-3 gap-2 bg-slate-900 p-2 rounded-3xl shadow-lg sticky bottom-4 z-40">
+                <button onclick="switchTab('dashboard')" class="py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl text-xs font-bold flex flex-col items-center justify-center cursor-pointer transition">
+                    <i class="fa-solid fa-rotate-left mb-1"></i>
+                    <span>Volver</span>
+                </button>
+                <button onclick="alert('Venta eliminada de caja')" class="py-3 bg-slate-800 hover:bg-slate-700 text-rose-400 rounded-2xl text-xs font-bold flex flex-col items-center justify-center cursor-pointer transition">
+                    <i class="fa-solid fa-trash mb-1"></i>
+                    <span>Eliminar</span>
+                </button>
+                <button onclick="procesarPagoFinal()" class="py-3 bg-amber-500 hover:bg-amber-600 text-slate-900 rounded-2xl text-xs font-black flex flex-col items-center justify-center cursor-pointer transition shadow-md">
+                    <i class="fa-solid fa-dollar-sign mb-1 text-sm"></i>
+                    <span>Pago</span>
                 </button>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 5: CATÁLOGO ================= -->
+        <!-- Resto de módulos (Catálogo, Estadísticas, Informes, Contabilidad, Ajustes) -->
         <section id="tab-catalogo" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Catálogo de Servicios</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 6: ESTADÍSTICAS ================= -->
         <section id="tab-estadisticas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Estadísticas</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 7: MARKETING ================= -->
         <section id="tab-marketing" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Marketing</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 8: INFORMES ================= -->
         <section id="tab-informes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Informes</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 9: CONTABILIDAD ================= -->
         <section id="tab-finanzas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
-                    <p class="text-xs text-slate-500">Control por plazos personalizados</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
-            </div>
-            <div class="space-y-3">
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                    <div>
-                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Plazo: 30 Días</span>
-                        <h4 class="font-bold text-sm text-slate-800 mt-1">Alquiler del Local</h4>
-                        <p class="text-xs text-slate-400">Meta: 600.00 € | Aporte porcentual diario</p>
-                    </div>
-                    <div class="w-full md:w-40 bg-slate-100 rounded-full h-2.5">
-                        <div class="bg-amber-500 h-2.5 rounded-full" style="width: 35%"></div>
-                    </div>
-                </div>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 10: AJUSTES Y EMPLEADOS ================= -->
         <section id="tab-ajustes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Ajustes - Datos Maestros</h3>
-                    <p class="text-xs text-slate-500">Gestión de plantilla y empleados</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Ajustes del Sistema</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
-            </div>
-
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                    <div class="flex items-center space-x-2">
-                        <i class="fa-solid fa-users text-teal-600"></i>
-                        <h4 class="font-bold text-sm text-slate-800">Estilistas / Empleados Activos</h4>
-                    </div>
-                    <button onclick="abrirModalEmpleado()" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition cursor-pointer">
-                        + Añadir Empleado
-                    </button>
-                </div>
-
-                <div class="space-y-2">
-                    <div class="p-3 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold text-xs">AD</div>
-                            <div>
-                                <p class="font-bold text-xs text-slate-800">Admin / Manager Principal</p>
-                                <p class="text-[10px] text-slate-400">ID: 001 | Rol: Gerente</p>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full font-medium">Activo</span>
-                    </div>
-                    <div class="p-3 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xs">MR</div>
-                            <div>
-                                <p class="font-bold text-xs text-slate-800">María Estilista</p>
-                                <p class="text-[10px] text-slate-400">ID: 002 | Rol: Estilista</p>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full font-medium">Activo</span>
-                    </div>
-                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- VENTANA MODAL PARA NUEVA RESERVA -->
-    <div id="modal-nueva-reserva" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md p-6 rounded-3xl shadow-xl space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                <h3 class="font-bold text-slate-900 text-base">Nueva Reserva / Cita</h3>
-                <button onclick="cerrarModalReserva()" class="text-slate-400 hover:text-slate-700 text-sm font-bold cursor-pointer">✕</button>
-            </div>
-            
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Cliente</label>
-                    <select id="select-cliente" onchange="verificarNuevoCliente(this.value)" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 cursor-pointer">
-                        <option value="maria">María Rodríguez (Habitual)</option>
-                        <option value="carlos">Carlos Gómez (Habitual)</option>
-                        <option value="nuevo" class="font-bold text-teal-600">➕ Crear Nuevo Cliente</option>
-                    </select>
-                </div>
-
-                <div id="panel-nuevo-cliente" class="hidden p-3 bg-teal-50/50 border border-teal-100 rounded-2xl space-y-2">
-                    <p class="text-xs font-bold text-teal-900">Datos del Nuevo Cliente</p>
-                    <input type="text" id="nuevo-nombre" placeholder="Nombre y Apellidos" class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-white">
-                    <input type="tel" id="nuevo-telefono" placeholder="Teléfono de contacto" class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-white">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Asignar a Estilista / Empleado</label>
-                    <select id="select-empleado" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 cursor-pointer">
-                        <option value="admin">Admin / Manager</option>
-                        <option value="maria">María Estilista</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio</label>
-                    <select id="res-servicio" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
-                        <option>Corte Mujer + Peinado (35€)</option>
-                        <option>Corte de Barba Clásico (15€)</option>
-                        <option>Trabajo Técnico Color (60€)</option>
-                    </select>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Hora</label>
-                        <input type="time" id="res-hora" value="10:00" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1">Fecha</label>
-                        <input type="date" id="res-fecha" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex space-x-2 pt-2">
-                <button onclick="cerrarModalReserva()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Cancelar</button>
-                <button onclick="guardarReserva()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Guardar Cita</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- VENTANA MODAL PARA AÑADIR EMPLEADO -->
-    <div id="modal-nuevo-empleado" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md p-6 rounded-3xl shadow-xl space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                <h3 class="font-bold text-slate-900 text-base">Añadir Nuevo Empleado</h3>
-                <button onclick="cerrarModalEmpleado()" class="text-slate-400 hover:text-slate-700 text-sm font-bold cursor-pointer">✕</button>
-            </div>
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nombre y Apellidos</label>
-                    <input type="text" id="emp-nombre" placeholder="Ej. Juan Pérez" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Rol / Cargo</label>
-                    <select id="emp-rol" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
-                        <option value="estilista">Estilista</option>
-                        <option value="manager">Manager / Gerente</option>
-                        <option value="junior">Asistente / Junior</option>
-                    </select>
-                </div>
-            </div>
-            <div class="flex space-x-2 pt-2">
-                <button onclick="cerrarModalEmpleado()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Cancelar</button>
-                <button onclick="guardarEmpleado()" class="flex-1 bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Guardar Empleado</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- SCRIPT GENERAL Y DE NAVEGACIÓN -->
+    <!-- SCRIPT DE NAVEGACIÓN Y CÁLCULO AUTOMÁTICO DEL TPV -->
     <script>
-        let metodoPagoSeleccionado = "Efectivo";
-
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => {
                 el.classList.add('hidden');
@@ -433,111 +298,29 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function cambiarVistaAgenda(vista) {
-            ['columna', 'dia', 'lista'].forEach(v => {
-                const btn = document.getElementById('btn-v-' + v);
-                const panel = document.getElementById('vista-' + v);
-                if(btn && panel) {
-                    if(v === vista) {
-                        btn.className = "px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer transition";
-                        panel.classList.remove('hidden');
-                    } else {
-                        btn.className = "px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition";
-                        panel.classList.add('hidden');
-                    }
-                }
-            });
+        // Función matemática exacta que calcula el total igual que en tu captura
+        function calcularTotalTPV() {
+            const base = parseFloat(document.getElementById('tpv-precio-base').value) || 0;
+            const descuento = parseFloat(document.getElementById('tpv-descuento').value) || 0;
+            const tasaPorc = parseFloat(document.getElementById('tpv-tasa-porc').value) || 0;
+            const propina = parseFloat(document.getElementById('tpv-propina').value) || 0;
+
+            // Cálculo: (Base - Descuento) + Tasa porcentual + Propina
+            const subtotal = Math.max(0, base - descuento);
+            const valorTasa = subtotal * (tasaPorc / 100);
+            const totalFinal = subtotal + valorTasa + propina;
+
+            document.getElementById('tpv-total-final').innerText = totalFinal.toFixed(2) + " €";
         }
 
-        // Lógica del TPV interactivo
-        const selectServicio = document.getElementById('tpv-servicio');
-        if(selectServicio) {
-            selectServicio.addEventListener('change', function() {
-                const precio = this.value;
-                document.getElementById('tpv-total-display').innerText = Number(precio).toFixed(2) + " €";
-            });
-        }
-
-        function seleccionarPago(btn, metodo) {
-            metodoPagoSeleccionado = metodo;
-            document.querySelectorAll('.btn-pago').forEach(b => {
-                b.className = "p-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer btn-pago transition";
-            });
-            btn.className = "p-2.5 bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-bold cursor-pointer btn-pago transition";
-        }
-
-        function registrarCobroTPV() {
-            const empleado = document.getElementById('tpv-empleado').value;
-            const selectSrv = document.getElementById('tpv-servicio');
-            const servicioTexto = selectSrv.options[selectSrv.selectedIndex].text;
-            const total = document.getElementById('tpv-total-display').innerText;
-
-            alert("¡Cobro exitoso!\nServicio: " + servicioTexto + "\nAtendido por: " + empleado + "\nMétodo: " + metodoPagoSeleccionado + "\nTotal: " + total);
+        function procesarPagoFinal() {
+            const total = document.getElementById('tpv-total-final').innerText;
+            alert("¡Pago procesado con éxito por un importe de " + total + "!\nCaja actualizada correctamente.");
             switchTab('dashboard');
         }
 
-        function abrirModalReserva() {
-            document.getElementById('modal-nueva-reserva').classList.remove('hidden');
-            document.getElementById('panel-nuevo-cliente').classList.add('hidden');
-            document.getElementById('select-cliente').value = "maria";
-        }
-
-        function cerrarModalReserva() {
-            document.getElementById('modal-nueva-reserva').classList.add('hidden');
-        }
-
-        function verificarNuevoCliente(valor) {
-            const panelNuevo = document.getElementById('panel-nuevo-cliente');
-            if (valor === 'nuevo') {
-                panelNuevo.classList.remove('hidden');
-            } else {
-                panelNuevo.classList.add('hidden');
-            }
-        }
-
-        function guardarReserva() {
-            const select = document.getElementById('select-cliente');
-            let nombreCliente = select.options[select.selectedIndex].text;
-            const empleadoSelect = document.getElementById('select-empleado');
-            const nombreEmpleado = empleadoSelect.options[empleadoSelect.selectedIndex].text;
-
-            if (select.value === 'nuevo') {
-                const nuevoNombre = document.getElementById('nuevo-nombre').value;
-                if (!nuevoNombre) {
-                    alert("Por favor, introduce el nombre del nuevo cliente.");
-                    return;
-                }
-                nombreCliente = nuevoNombre + " (Nuevo)";
-            }
-
-            alert("¡Cita guardada para " + nombreCliente + " asignada a " + nombreEmpleado + "!");
-            cerrarModalReserva();
-        }
-
-        function abrirModalEmpleado() {
-            document.getElementById('modal-nuevo-empleado').classList.remove('hidden');
-        }
-
-        function cerrarModalEmpleado() {
-            document.getElementById('modal-nuevo-empleado').classList.add('hidden');
-        }
-
-        function guardarEmpleado() {
-            const nombre = document.getElementById('emp-nombre').value;
-            if(!nombre) {
-                alert("Por favor, introduce el nombre del empleado.");
-                return;
-            }
-            alert("¡Empleado " + nombre + " añadido con éxito a la plantilla!");
-            cerrarModalEmpleado();
-        }
-
-        function toggleCalendarSync() {
-            const chk = document.getElementById('sync-calendar-checkbox');
-            if(chk) {
-                chk.checked = !chk.checked;
-            }
-        }
+        // Ejecutar cálculo al iniciar por si acaso
+        calcularTotalTPV();
     </script>
 </body>
 </html>
