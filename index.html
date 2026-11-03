@@ -110,13 +110,14 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 2: HORARIO / AGENDA AVANZADA ================= -->
+        <!-- ================= MÓDULO 2: HORARIO / AGENDA AVANZADA (JORNADA COMPLETA) ================= -->
         <section id="tab-agenda" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
                     <h3 class="font-bold text-slate-900 text-base" id="titulo-fecha-agenda">📅 03-11-2026</h3>
                     <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
+                <!-- Selector de vistas interactivo -->
                 <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
                     <button onclick="cambiarVistaAgenda('columna')" id="btn-v-columna" class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer transition">Columna</button>
                     <button onclick="cambiarVistaAgenda('dia')" id="btn-v-dia" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition">Día</button>
@@ -136,8 +137,9 @@
                     </div>
                 </div>
 
+                <!-- Contenedor dinámico de la agenda con jornada completa de 08:00 a 20:00 -->
                 <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto" id="area-contenido-agenda">
-                    <!-- Vista por defecto: Columna -->
+                    <!-- Vista Columna -->
                     <div id="vista-columna" class="min-w-[320px] agenda-vista-panel space-y-2">
                         <div class="grid grid-cols-5 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
                             <span class="w-12">Hora</span>
@@ -146,7 +148,19 @@
                             <span>5/11</span>
                             <span>6/11</span>
                         </div>
+                        
                         <div class="space-y-2 text-xs text-slate-400">
+                            <!-- 08:00 -->
+                            <div class="flex items-center border-b border-slate-50 pb-1.5">
+                                <span class="w-12 font-semibold text-[11px]">08:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                </div>
+                            </div>
+                            <!-- 09:00 -->
                             <div class="flex items-center border-b border-slate-50 pb-1.5">
                                 <span class="w-12 font-semibold text-[11px]">09:00</span>
                                 <div class="flex-1 grid grid-cols-4 gap-1">
@@ -156,19 +170,70 @@
                                     <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
                                 </div>
                             </div>
+                            <!-- 10:00 -->
+                            <div class="flex items-center border-b border-slate-50 pb-1.5">
+                                <span class="w-12 font-semibold text-[11px]">10:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center text-blue-700 font-bold text-[10px] shadow-xs">Barba (Carlos)</div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                </div>
+                            </div>
+                            <!-- 11:00 -->
+                            <div class="flex items-center border-b border-slate-50 pb-1.5">
+                                <span class="w-12 font-semibold text-[11px]">11:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                </div>
+                            </div>
+                            <!-- 12:00 -->
+                            <div class="flex items-center border-b border-slate-50 pb-1.5">
+                                <span class="w-12 font-semibold text-[11px]">12:00</span>
+                                <div class="flex-1 grid grid-cols-4 gap-1">
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                    <div class="h-8 bg-purple-50 border border-purple-100 rounded-lg flex items-center justify-center text-purple-700 font-bold text-[10px] shadow-xs">Color (Ana)</div>
+                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                </div>
+                            </div>
+                            <!-- 13:00 a 20:00 -->
+                            <script>
+                                // Bucle para generar de forma limpia el resto de horas hasta las 20:00
+                                for(let h = 13; h <= 20; h++) {
+                                    document.write(`
+                                        <div class="flex items-center border-b border-slate-50 pb-1.5">
+                                            <span class="w-12 font-semibold text-[11px]">${h}:00</span>
+                                            <div class="flex-1 grid grid-cols-4 gap-1">
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                            </div>
+                                        </div>
+                                    `);
+                                }
+                            </script>
                         </div>
                     </div>
+
                     <!-- Vista Diaria -->
                     <div id="vista-dia" class="hidden space-y-3">
                         <h4 class="text-xs font-bold text-slate-500 uppercase">Agenda del Día - 3 de Noviembre</h4>
-                        <div class="p-3 bg-teal-50 border border-teal-100 rounded-2xl flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-xs text-teal-900">09:00 - María Rodríguez</p>
-                                <p class="text-[10px] text-teal-700">Corte Mujer + Peinado</p>
+                        <div class="space-y-2">
+                            <div class="p-3 bg-teal-50 border border-teal-100 rounded-2xl flex justify-between items-center">
+                                <div>
+                                    <p class="font-bold text-xs text-teal-900">09:00 - María Rodríguez</p>
+                                    <p class="text-[10px] text-teal-700">Corte Mujer + Peinado</p>
+                                </div>
+                                <span class="text-xs font-bold text-teal-800 bg-white px-2 py-1 rounded-lg">35.00 €</span>
                             </div>
-                            <span class="text-xs font-bold text-teal-800 bg-white px-2 py-1 rounded-lg">35.00 €</span>
                         </div>
                     </div>
+
                     <!-- Vista Lista -->
                     <div id="vista-lista" class="hidden space-y-2">
                         <h4 class="text-xs font-bold text-slate-500 uppercase">Listado General de Reservas</h4>
@@ -184,7 +249,7 @@
             </div>
         </section>
 
-        <!-- Resto de módulos (Clientes, Caja, Catálogo, Ajustes, etc.) -->
+        <!-- Resto de módulos operativos -->
         <section id="tab-clientes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
@@ -245,7 +310,7 @@
             </div>
             
             <div class="space-y-3">
-                <!-- Selector de Cliente Existente o Nuevo -->
+                <!-- Selector de Cliente o Nuevo -->
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Cliente</label>
                     <select id="select-cliente" onchange="verificarNuevoCliente(this.value)" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 cursor-pointer">
@@ -255,7 +320,7 @@
                     </select>
                 </div>
 
-                <!-- Campos adicionales si se selecciona "Crear Nuevo Cliente" -->
+                <!-- Campos dinámicos para nuevo cliente -->
                 <div id="panel-nuevo-cliente" class="hidden p-3 bg-teal-50/50 border border-teal-100 rounded-2xl space-y-2">
                     <p class="text-xs font-bold text-teal-900">Datos del Nuevo Cliente</p>
                     <input type="text" id="nuevo-nombre" placeholder="Nombre y Apellidos" class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-white">
@@ -289,7 +354,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT GENERAL Y DE LA AGENDA -->
+    <!-- SCRIPT DE NAVEGACIÓN Y FUNCIONALIDAD -->
     <script>
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => {
