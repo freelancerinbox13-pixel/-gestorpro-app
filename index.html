@@ -114,20 +114,20 @@
         <section id="tab-agenda" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
-                    <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
+                    <h3 class="font-bold text-slate-900 text-base" id="titulo-fecha-agenda">📅 03-11-2026</h3>
                     <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
-                <!-- Selector de vistas interactivo -->
+                <!-- Selector de vistas interactivo real -->
                 <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
-                    <button onclick="cambiarVistaAgenda('columna')" id="btn-v-columna" class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer">Columna</button>
-                    <button onclick="cambiarVistaAgenda('dia')" id="btn-v-dia" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer">Día</button>
-                    <button onclick="cambiarVistaAgenda('lista')" id="btn-v-lista" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer">Lista</button>
+                    <button onclick="cambiarVistaAgenda('columna')" id="btn-v-columna" class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer transition">Columna</button>
+                    <button onclick="cambiarVistaAgenda('dia')" id="btn-v-dia" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition">Día</button>
+                    <button onclick="cambiarVistaAgenda('lista')" id="btn-v-lista" class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition">Lista</button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4 md:col-span-1">
-                    <button onclick="abrirNuevaReserva()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2 cursor-pointer">
+                    <button onclick="abrirModalReserva()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2 cursor-pointer">
                         <i class="fa-solid fa-plus"></i>
                         <span>NUEVA RESERVA</span>
                     </button>
@@ -135,27 +135,12 @@
                         <span class="text-xs font-semibold text-teal-900">Sincronizar G. Calendar</span>
                         <input type="checkbox" id="sync-calendar-checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600 pointer-events-none">
                     </div>
-                    <div class="border-t border-slate-100 pt-3">
-                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Filtros de Citas</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
-                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600" onchange="filtrarCitas('nuevos', this.checked)">
-                                <span>Nuevos clientes</span>
-                            </label>
-                            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
-                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600" onchange="filtrarCitas('nopagados', this.checked)">
-                                <span>No pagados</span>
-                            </label>
-                            <label class="flex items-center space-x-2 text-xs font-medium text-slate-700 cursor-pointer">
-                                <input type="checkbox" class="rounded text-teal-600 accent-teal-600" onchange="filtrarCitas('enlinea', this.checked)">
-                                <span>Reservas en línea</span>
-                            </label>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
-                    <div class="min-w-[300px]" id="contenedor-agenda-vista">
+                <!-- Contenedor dinámico de la agenda -->
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto" id="area-contenido-agenda">
+                    <!-- Vista por defecto: Columna -->
+                    <div id="vista-columna" class="min-w-[300px] agenda-vista-panel">
                         <div class="grid grid-cols-4 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
                             <span>3/11 (mar)</span>
                             <span>4/11 (mié)</span>
@@ -166,7 +151,7 @@
                             <div class="flex items-center border-b border-slate-50 pb-2">
                                 <span class="w-12 font-semibold">09:00</span>
                                 <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px] cursor-pointer hover:bg-teal-100 transition" onclick="alert('Cita: Corte con María (09:00)')">Corte (María)</div>
+                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px]">Corte (María)</div>
                                     <div class="h-8 bg-slate-50 rounded-lg"></div>
                                     <div class="h-8 bg-slate-50 rounded-lg"></div>
                                     <div class="h-8 bg-slate-50 rounded-lg"></div>
@@ -174,76 +159,77 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Vista Diaria (Oculta por defecto) -->
+                    <div id="vista-dia" class="hidden space-y-3">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase">Agenda del Día - 3 de Noviembre</h4>
+                        <div class="p-3 bg-teal-50 border border-teal-100 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-xs text-teal-900">09:00 - María Rodríguez</p>
+                                <p class="text-[10px] text-teal-700">Corte Mujer + Peinado</p>
+                            </div>
+                            <span class="text-xs font-bold text-teal-800 bg-white px-2 py-1 rounded-lg">35.00 €</span>
+                        </div>
+                    </div>
+
+                    <!-- Vista de Lista (Oculta por defecto) -->
+                    <div id="vista-lista" class="hidden space-y-2">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase">Listado General de Reservas</h4>
+                        <div class="p-3 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-xs text-slate-800">03/11/2026 - 09:00</p>
+                                <p class="text-[10px] text-slate-500">Cliente: María Rodríguez | Estilista: Admin</p>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Confirmada</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 3: CLIENTES ================= -->
+        <!-- Resto de módulos (Clientes, Caja, Catálogo, Ajustes, etc.) -->
         <section id="tab-clientes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
-                    <p class="text-xs text-slate-500">Historiales y tratamientos</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 4: CAJA / TPV ================= -->
         <section id="tab-caja" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
-                    <p class="text-xs text-slate-500">Cobro rápido de servicios</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 5: CATÁLOGO ================= -->
         <section id="tab-catalogo" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Catálogo de Servicios</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 6: ESTADÍSTICAS ================= -->
         <section id="tab-estadisticas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Estadísticas</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 7: MARKETING ================= -->
         <section id="tab-marketing" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Marketing</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 8: INFORMES ================= -->
         <section id="tab-informes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Informes</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 9: CONTABILIDAD Y GASTOS FIJOS ================= -->
         <section id="tab-finanzas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
-                    <p class="text-xs text-slate-500">Control por plazos personalizados</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
         </section>
-
-        <!-- ================= MÓDULO 10: AJUSTES ================= -->
         <section id="tab-ajustes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Ajustes del Sistema</h3>
@@ -253,7 +239,45 @@
 
     </main>
 
-    <!-- SCRIPT DE NAVEGACIÓN Y FUNCIONALIDAD DE AGENDA -->
+    <!-- VENTANA MODAL PARA NUEVA RESERVA (OCULTA POR DEFECTO) -->
+    <div id="modal-nueva-reserva" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md p-6 rounded-3xl shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 class="font-bold text-slate-900 text-base">Nueva Reserva / Cita</h3>
+                <button onclick="cerrarModalReserva()" class="text-slate-400 hover:text-slate-700 text-sm font-bold cursor-pointer">✕</button>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nombre del Cliente</label>
+                    <input type="text" id="res-cliente" placeholder="Ej. Juan Pérez" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio</label>
+                    <select id="res-servicio" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
+                        <option>Corte Mujer + Peinado (35€)</option>
+                        <option>Corte de Barba Clásico (15€)</option>
+                        <option>Trabajo Técnico Color (60€)</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Hora</label>
+                        <input type="time" id="res-hora" value="10:00" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Fecha</label>
+                        <input type="date" id="res-fecha" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-x-2 pt-2">
+                <button onclick="cerrarModalReserva()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Cancelar</button>
+                <button onclick="guardarReserva()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Guardar Cita</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT GENERAL Y DE LA AGENDA -->
     <script>
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => {
@@ -266,40 +290,47 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // Lógica para cambiar las vistas de la agenda de forma interactiva
         function cambiarVistaAgenda(vista) {
-            // Cambiar estilos de los botones de vista
             ['columna', 'dia', 'lista'].forEach(v => {
                 const btn = document.getElementById('btn-v-' + v);
-                if(btn) {
+                const panel = document.getElementById('vista-' + v);
+                if(btn && panel) {
                     if(v === vista) {
-                        btn.className = "px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer";
+                        btn.className = "px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer transition";
+                        panel.classList.remove('hidden');
                     } else {
-                        btn.className = "px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer";
+                        btn.className = "px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition";
+                        panel.classList.add('hidden');
                     }
                 }
             });
-            // Acción simulada según la vista seleccionada
-            if(vista === 'dia') {
-                alert("Cambiado a Vista Diaria");
-            } else if(vista === 'lista') {
-                alert("Cambiado a Vista de Lista de Reservas");
-            }
         }
 
-        function abrirNuevaReserva() {
-            alert("Abriendo formulario interactivo para Nueva Reserva / Cita");
+        // Control del Modal de Nueva Reserva
+        function abrirModalReserva() {
+            document.getElementById('modal-nueva-reserva').classList.remove('hidden');
+        }
+
+        function cerrarModalReserva() {
+            document.getElementById('modal-nueva-reserva').classList.add('hidden');
+        }
+
+        function guardarReserva() {
+            const cliente = document.getElementById('res-cliente').value;
+            if(!cliente) {
+                alert("Por favor, introduce el nombre del cliente.");
+                return;
+            }
+            alert("¡Cita guardada con éxito para " + cliente + "!");
+            cerrarModalReserva();
         }
 
         function toggleCalendarSync() {
             const chk = document.getElementById('sync-calendar-checkbox');
             if(chk) {
                 chk.checked = !chk.checked;
-                alert("Sincronización con Google Calendar: " + (chk.checked ? "Activada" : "Desactivada"));
             }
-        }
-
-        function filtrarCitas(tipo, estado) {
-            console.log("Filtro aplicado:", tipo, "Estado:", estado);
         }
     </script>
 </body>
