@@ -26,7 +26,7 @@
                 <span class="text-xs bg-teal-500/20 text-teal-300 px-2.5 py-1 rounded-full font-medium border border-teal-500/30">
                     Modo Pro
                 </span>
-                <button onclick="switchTab('dashboard')" class="w-8 h-8 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-slate-300 transition" title="Ir al Menú Principal">
+                <button onclick="switchTab('dashboard')" class="w-8 h-8 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-slate-300 transition cursor-pointer" title="Ir al Menú Principal">
                     <i class="fa-solid fa-house text-xs"></i>
                 </button>
             </div>
@@ -115,48 +115,11 @@
             <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
                     <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
-                    <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition">Menú</button>
-                </div>
-                <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
-                    <button class="px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs">Columna</button>
-                    <button class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800">Día</button>
-                    <button class="px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800">Lista</button>
+                    <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4 md:col-span-1">
-                    <button onclick="alert('Ventana para crear nueva reserva')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-2xl shadow-sm transition text-sm flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-plus"></i>
-                        <span>NUEVA RESERVA</span>
-                    </button>
-                    <div class="flex items-center justify-between p-3 bg-teal-50/50 border border-teal-100 rounded-2xl">
-                        <span class="text-xs font-semibold text-teal-900">Sincronizar G. Calendar</span>
-                        <input type="checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600">
-                    </div>
-                </div>
-
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
-                    <div class="min-w-[300px]">
-                        <div class="grid grid-cols-4 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
-                            <span>3/11 (mar)</span>
-                            <span>4/11 (mié)</span>
-                            <span>5/11 (jue)</span>
-                            <span>6/11 (vie)</span>
-                        </div>
-                        <div class="space-y-3 text-xs text-slate-400">
-                            <div class="flex items-center border-b border-slate-50 pb-2">
-                                <span class="w-12 font-semibold">09:00</span>
-                                <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-teal-50 border border-teal-100 rounded-lg flex items-center justify-center text-teal-700 font-bold text-[10px]">Corte (María)</div>
-                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 text-center">
+                <p class="text-sm font-semibold text-slate-700">Módulo de Agenda y Horario Activo</p>
             </div>
         </section>
 
@@ -164,7 +127,7 @@
         <section id="tab-clientes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -172,7 +135,7 @@
         <section id="tab-caja" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -180,7 +143,7 @@
         <section id="tab-catalogo" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Catálogo de Servicios</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -188,7 +151,7 @@
         <section id="tab-estadisticas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Estadísticas</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -196,7 +159,7 @@
         <section id="tab-marketing" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Marketing</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -204,7 +167,7 @@
         <section id="tab-informes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Informes</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -212,7 +175,7 @@
         <section id="tab-finanzas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
@@ -220,24 +183,23 @@
         <section id="tab-ajustes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <h3 class="font-bold text-slate-900">Ajustes del Sistema</h3>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold">Volver</button>
+                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Volver</button>
             </div>
         </section>
 
     </main>
 
-    <!-- SCRIPT DE NAVEGACIÓN ROBUSTO -->
+    <!-- SCRIPT DE NAVEGACIÓN CORREGIDO -->
     <script>
         function switchTab(tabId) {
-            // Ocultar todas las secciones
+            // Ocultar todas las pestañas
             document.querySelectorAll('.tab-content').forEach(el => {
                 el.classList.add('hidden');
             });
-            // Mostrar la seleccionada
-            const target = document.getElementById('tab-':tabId ? 'tab-' + tabId : 'tab-dashboard');
-            const targetEl = document.getElementById('tab-' + tabId);
-            if (targetEl) {
-                targetEl.classList.remove('hidden');
+            // Mostrar la pestaña seleccionada
+            const target = document.getElementById('tab-' + tabId);
+            if (target) {
+                target.classList.remove('hidden');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
