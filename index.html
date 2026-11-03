@@ -110,11 +110,11 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 2: AGENDA / HORARIO (JORNADA COMPLETA 08:00 A 20:00) ================= -->
+        <!-- ================= MÓDULO 2: AGENDA / HORARIO ================= -->
         <section id="tab-agenda" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
-                    <h3 class="font-bold text-slate-900 text-base" id="titulo-fecha-agenda">📅 03-11-2026</h3>
+                    <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
                     <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
                 <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
@@ -130,15 +130,10 @@
                         <i class="fa-solid fa-plus"></i>
                         <span>NUEVA RESERVA</span>
                     </button>
-                    <div class="flex items-center justify-between p-3 bg-teal-50/50 border border-teal-100 rounded-2xl cursor-pointer" onclick="toggleCalendarSync()">
-                        <span class="text-xs font-semibold text-teal-900">Sincronizar G. Calendar</span>
-                        <input type="checkbox" id="sync-calendar-checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600 pointer-events-none">
-                    </div>
                 </div>
 
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto" id="area-contenido-agenda">
-                    <!-- Vista Columna (08:00 a 20:00) -->
-                    <div id="vista-columna" class="min-w-[320px] agenda-vista-panel space-y-2">
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
+                    <div id="vista-columna" class="min-w-[320px] space-y-2">
                         <div class="grid grid-cols-5 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
                             <span class="w-12">Hora</span>
                             <span>3/11</span>
@@ -146,19 +141,7 @@
                             <span>5/11</span>
                             <span>6/11</span>
                         </div>
-                        
                         <div class="space-y-2 text-xs text-slate-400">
-                            <!-- 08:00 -->
-                            <div class="flex items-center border-b border-slate-50 pb-1.5">
-                                <span class="w-12 font-semibold text-[11px]">08:00</span>
-                                <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                </div>
-                            </div>
-                            <!-- 09:00 -->
                             <div class="flex items-center border-b border-slate-50 pb-1.5">
                                 <span class="w-12 font-semibold text-[11px]">09:00</span>
                                 <div class="flex-1 grid grid-cols-4 gap-1">
@@ -168,76 +151,6 @@
                                     <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
                                 </div>
                             </div>
-                            <!-- 10:00 -->
-                            <div class="flex items-center border-b border-slate-50 pb-1.5">
-                                <span class="w-12 font-semibold text-[11px]">10:00</span>
-                                <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center text-blue-700 font-bold text-[10px] shadow-xs">Barba (Carlos)</div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                </div>
-                            </div>
-                            <!-- 11:00 -->
-                            <div class="flex items-center border-b border-slate-50 pb-1.5">
-                                <span class="w-12 font-semibold text-[11px]">11:00</span>
-                                <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                </div>
-                            </div>
-                            <!-- 12:00 -->
-                            <div class="flex items-center border-b border-slate-50 pb-1.5">
-                                <span class="w-12 font-semibold text-[11px]">12:00</span>
-                                <div class="flex-1 grid grid-cols-4 gap-1">
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                    <div class="h-8 bg-purple-50 border border-purple-100 rounded-lg flex items-center justify-center text-purple-700 font-bold text-[10px] shadow-xs">Color (Ana)</div>
-                                    <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                </div>
-                            </div>
-                            <!-- 13:00 a 20:00 -->
-                            <script>
-                                for(let h = 13; h <= 20; h++) {
-                                    document.write(`
-                                        <div class="flex items-center border-b border-slate-50 pb-1.5">
-                                            <span class="w-12 font-semibold text-[11px]">${h}:00</span>
-                                            <div class="flex-1 grid grid-cols-4 gap-1">
-                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
-                                            </div>
-                                        </div>
-                                    `);
-                                }
-                            </script>
-                        </div>
-                    </div>
-
-                    <!-- Vista Diaria -->
-                    <div id="vista-dia" class="hidden space-y-3">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase">Agenda del Día - 3 de Noviembre</h4>
-                        <div class="p-3 bg-teal-50 border border-teal-100 rounded-2xl flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-xs text-teal-900">09:00 - María Rodríguez</p>
-                                <p class="text-[10px] text-teal-700">Corte Mujer + Peinado</p>
-                            </div>
-                            <span class="text-xs font-bold text-teal-800 bg-white px-2 py-1 rounded-lg">35.00 €</span>
-                        </div>
-                    </div>
-
-                    <!-- Vista Lista -->
-                    <div id="vista-lista" class="hidden space-y-2">
-                        <h4 class="text-xs font-bold text-slate-500 uppercase">Listado General de Reservas</h4>
-                        <div class="p-3 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-xs text-slate-800">03/11/2026 - 09:00</p>
-                                <p class="text-[10px] text-slate-500">Cliente: María Rodríguez | Estilista: Admin</p>
-                            </div>
-                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Confirmada</span>
                         </div>
                     </div>
                 </div>
@@ -267,41 +180,50 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 4: CAJA / TPV ================= -->
+        <!-- ================= MÓDULO 4: CAJA / TPV INTERACTIVO ================= -->
         <section id="tab-caja" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <div>
                     <h3 class="font-bold text-slate-900">Finalizar Compra / TPV</h3>
-                    <p class="text-xs text-slate-500">Cobro rápido de servicios</p>
+                    <p class="text-xs text-slate-500">Cobro rápido de servicios vinculado a empleados</p>
                 </div>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
+
             <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Servicio / Producto</label>
-                    <select class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
-                        <option>Corte Mujer + Peinado (35€)</option>
-                        <option>Corte de Barba Clásico (15€)</option>
-                        <option>Trabajo Técnico Color (60€)</option>
+                    <select id="tpv-servicio" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
+                        <option value="35">Corte Mujer + Peinado (35.00 €)</option>
+                        <option value="15">Corte de Barba Clásico (15.00 €)</option>
+                        <option value="60">Trabajo Técnico Color (60.00 €)</option>
                     </select>
                 </div>
+
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Asignar a Empleado</label>
-                    <select class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
-                        <option>Admin / Manager</option>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Asignar a Empleado / Estilista</label>
+                    <select id="tpv-empleado" class="w-full p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm">
+                        <option>Admin / Manager Principal</option>
                         <option>María Estilista</option>
                     </select>
                 </div>
+
                 <div>
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Método de Pago</label>
                     <div class="grid grid-cols-3 gap-2">
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100 cursor-pointer">Efectivo</button>
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100 cursor-pointer">Tarjeta</button>
-                        <button class="py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium hover:bg-slate-100 cursor-pointer">Bizum</button>
+                        <button type="button" onclick="seleccionarPago(this, 'Efectivo')" class="p-2.5 bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-bold cursor-pointer btn-pago transition">Efectivo</button>
+                        <button type="button" onclick="seleccionarPago(this, 'Tarjeta')" class="p-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer btn-pago transition">Tarjeta</button>
+                        <button type="button" onclick="seleccionarPago(this, 'Bizum')" class="p-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer btn-pago transition">Bizum</button>
                     </div>
                 </div>
-                <button onclick="alert('Cobro registrado con éxito')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm cursor-pointer">
-                    Registrar Cobro
+
+                <div class="p-4 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-600">Total a Cobrar:</span>
+                    <span class="text-base font-black text-emerald-600" id="tpv-total-display">35.00 €</span>
+                </div>
+
+                <button onclick="registrarCobroTPV()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition text-sm shadow-sm cursor-pointer">
+                    Registrar Cobro y Finalizar
                 </button>
             </div>
         </section>
@@ -338,7 +260,7 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 9: CONTABILIDAD Y GASTOS FIJOS ================= -->
+        <!-- ================= MÓDULO 9: CONTABILIDAD ================= -->
         <section id="tab-finanzas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <div>
@@ -409,7 +331,7 @@
 
     </main>
 
-    <!-- VENTANA MODAL PARA NUEVA RESERVA (CON CLIENTE NUEVO Y EMPLEADO) -->
+    <!-- VENTANA MODAL PARA NUEVA RESERVA -->
     <div id="modal-nueva-reserva" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md p-6 rounded-3xl shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -498,6 +420,8 @@
 
     <!-- SCRIPT GENERAL Y DE NAVEGACIÓN -->
     <script>
+        let metodoPagoSeleccionado = "Efectivo";
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => {
                 el.classList.add('hidden');
@@ -523,6 +447,33 @@
                     }
                 }
             });
+        }
+
+        // Lógica del TPV interactivo
+        const selectServicio = document.getElementById('tpv-servicio');
+        if(selectServicio) {
+            selectServicio.addEventListener('change', function() {
+                const precio = this.value;
+                document.getElementById('tpv-total-display').innerText = Number(precio).toFixed(2) + " €";
+            });
+        }
+
+        function seleccionarPago(btn, metodo) {
+            metodoPagoSeleccionado = metodo;
+            document.querySelectorAll('.btn-pago').forEach(b => {
+                b.className = "p-2.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl text-xs font-medium cursor-pointer btn-pago transition";
+            });
+            btn.className = "p-2.5 bg-teal-50 border border-teal-200 text-teal-900 rounded-xl text-xs font-bold cursor-pointer btn-pago transition";
+        }
+
+        function registrarCobroTPV() {
+            const empleado = document.getElementById('tpv-empleado').value;
+            const selectSrv = document.getElementById('tpv-servicio');
+            const servicioTexto = selectSrv.options[selectSrv.selectedIndex].text;
+            const total = document.getElementById('tpv-total-display').innerText;
+
+            alert("¡Cobro exitoso!\nServicio: " + servicioTexto + "\nAtendido por: " + empleado + "\nMétodo: " + metodoPagoSeleccionado + "\nTotal: " + total);
+            switchTab('dashboard');
         }
 
         function abrirModalReserva() {
