@@ -110,11 +110,11 @@
             </div>
         </section>
 
-        <!-- ================= MÓDULO 2: AGENDA / HORARIO (CON BOTÓN NUEVO CLIENTE Y GOOGLE CALENDAR) ================= -->
+        <!-- ================= MÓDULO 2: AGENDA / HORARIO RESTAURADO ================= -->
         <section id="tab-agenda" class="tab-content hidden space-y-4">
             <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row justify-between items-center gap-3">
                 <div class="flex items-center space-x-3 w-full md:w-auto justify-between">
-                    <h3 class="font-bold text-slate-900 text-base">📅 03-11-2026</h3>
+                    <h3 class="font-bold text-slate-900 text-base" id="titulo-fecha-agenda">📅 03-11-2026</h3>
                     <button onclick="switchTab('dashboard')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer">Menú</button>
                 </div>
                 <div class="flex bg-slate-100 p-1 rounded-2xl w-full md:w-auto justify-center">
@@ -130,20 +130,18 @@
                         <i class="fa-solid fa-plus"></i>
                         <span>NUEVA RESERVA</span>
                     </button>
-                    <!-- BOTÓN NUEVO CLIENTE RÁPIDO -->
                     <button onclick="abrirModalCliente()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-2xl shadow-sm transition text-xs flex items-center justify-center space-x-2 cursor-pointer">
                         <i class="fa-solid fa-user-plus"></i>
                         <span>+ NUEVO CLIENTE</span>
                     </button>
-                    <!-- GOOGLE CALENDAR SYNC -->
                     <div class="flex items-center justify-between p-3 bg-teal-50/50 border border-teal-100 rounded-2xl cursor-pointer" onclick="toggleCalendarSync()">
                         <span class="text-xs font-semibold text-teal-900">Sincronizar G. Calendar</span>
                         <input type="checkbox" id="sync-calendar-checkbox" checked class="w-4 h-4 text-teal-600 rounded accent-teal-600 pointer-events-none">
                     </div>
                 </div>
 
-                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto">
-                    <div id="vista-columna" class="min-w-[320px] space-y-2">
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 md:col-span-2 overflow-x-auto" id="area-contenido-agenda">
+                    <div id="vista-columna" class="min-w-[320px] agenda-vista-panel space-y-2">
                         <div class="grid grid-cols-4 text-center text-xs font-bold text-slate-400 border-b border-slate-100 pb-2 mb-2">
                             <span class="w-12">Hora</span>
                             <span>Patricia</span>
@@ -154,23 +152,59 @@
                             <div class="flex items-center border-b border-slate-50 pb-1.5">
                                 <span class="w-12 font-semibold text-[11px]">10:00</span>
                                 <div class="flex-1 grid grid-cols-3 gap-1">
-                                    <div class="h-8 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center text-blue-700 font-bold text-[10px] shadow-xs">Elizabeth Wilson</div>
+                                    <div class="h-8 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center text-blue-700 font-bold text-[10px] shadow-xs cursor-pointer" onclick="switchTab('caja')">Elizabeth Wilson</div>
                                     <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
                                     <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
                                 </div>
                             </div>
+                            <script>
+                                for(let h = 11; h <= 20; h++) {
+                                    document.write(`
+                                        <div class="flex items-center border-b border-slate-50 pb-1.5">
+                                            <span class="w-12 font-semibold text-[11px]">${h}:00</span>
+                                            <div class="flex-1 grid grid-cols-3 gap-1">
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                                <div class="h-8 bg-slate-50 rounded-lg hover:bg-slate-100 cursor-pointer" onclick="abrirModalReserva()"></div>
+                                            </div>
+                                        </div>
+                                    `);
+                                }
+                            </script>
+                        </div>
+                    </div>
+
+                    <div id="vista-dia" class="hidden space-y-3">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase">Agenda del Día - 3 de Noviembre</h4>
+                        <div class="p-3 bg-teal-50 border border-teal-100 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-xs text-teal-900">10:00 - Elizabeth Wilson (Patricia)</p>
+                                <p class="text-[10px] text-teal-700">Corte + Color</p>
+                            </div>
+                            <span class="text-xs font-bold text-teal-800 bg-white px-2 py-1 rounded-lg">215.00 €</span>
+                        </div>
+                    </div>
+
+                    <div id="vista-lista" class="hidden space-y-2">
+                        <h4 class="text-xs font-bold text-slate-500 uppercase">Listado General de Reservas</h4>
+                        <div class="p-3 bg-slate-50 border border-slate-100 rounded-2xl flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-xs text-slate-800">03/11/2026 - 10:00</p>
+                                <p class="text-[10px] text-slate-500">Cliente: Elizabeth Wilson | Estilista: Patricia</p>
+                            </div>
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Confirmada</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 3: CLIENTES (CON LISTADO Y BOTÓN NUEVO) ================= -->
+        <!-- ================= MÓDULO 3: CLIENTES CON FICHA TÉCNICA ================= -->
         <section id="tab-clientes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <div>
                     <h3 class="font-bold text-slate-900">Fichas de Clientes</h3>
-                    <p class="text-xs text-slate-500">Historiales y tratamientos</p>
+                    <p class="text-xs text-slate-500">Historiales, trabajos y color</p>
                 </div>
                 <div class="flex space-x-2">
                     <button onclick="abrirModalCliente()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition cursor-pointer">+ Nuevo Cliente</button>
@@ -183,177 +217,216 @@
                         <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-sm">EW</div>
                         <div>
                             <h4 class="font-bold text-sm text-slate-800">Elizabeth Wilson</h4>
-                            <p class="text-xs text-slate-400">Color: Melena 7.1 + Oxidante 20v | Tel: 600123456</p>
+                            <p class="text-xs text-slate-400">Trabajo: Corte + Color | Tono: Melena 7.1</p>
                         </div>
                     </div>
-                    <span class="text-xs bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-medium">Habitual</span>
-                </div>
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center font-bold text-sm">JM</div>
-                        <div>
-                            <h4 class="font-bold text-sm text-slate-800">Jennifer Moore</h4>
-                            <p class="text-xs text-slate-400">Tratamiento Capilar | Tel: 611987654</p>
-                        </div>
-                    </div>
-                    <span class="text-xs bg-emerald-50 text-emerald-600 px-2.5 py-1 rounded-full font-medium">Habitual</span>
+                    <button onclick="abrirFichaTecnica('Elizabeth Wilson', 'Corte + Color', 'Melena 7.1 + Oxidante 20v', '215.00 €')" class="bg-teal-50 text-teal-700 hover:bg-teal-100 px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer">
+                        <i class="fa-solid fa-file-medical mr-1"></i> Ficha Técnica
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 4: CAJA / TPV ================= -->
+        <!-- ================= MÓDULO 4: CAJA / TPV RESTAURADO Y COMPLETO ================= -->
         <section id="tab-caja" class="tab-content hidden space-y-4">
             <div class="bg-teal-600 text-white p-4 rounded-3xl shadow-sm flex justify-between items-center">
                 <h3 class="font-bold text-base">Finalizar compra</h3>
                 <button onclick="switchTab('dashboard')" class="bg-teal-700 hover:bg-teal-800 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer transition">Menú</button>
             </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-scissors"></i><span>Reserva</span>
+                </button>
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-user-clock"></i><span>Sin cita previa</span>
+                </button>
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-cart-shopping"></i><span>Productos</span>
+                </button>
+                <button class="bg-emerald-600 text-white py-2.5 px-3 rounded-2xl text-xs font-bold shadow-xs flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-gift"></i><span>Vale de regalo</span>
+                </button>
+            </div>
+
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-4">
-                <div class="flex justify-between items-center border-b border-slate-100 pb-2 text-xs font-bold text-slate-400 uppercase">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-2 text-xs font-bold text-slate-400 uppercase tracking-wider">
                     <span>Elemento</span>
                     <span>Precio</span>
                 </div>
-                <div class="flex justify-between items-start border-b border-slate-100 pb-4">
-                    <div>
-                        <p class="text-xs text-slate-400 font-semibold">Nombre</p>
-                        <p class="text-sm font-bold text-slate-800">Elizabeth Wilson</p>
-                        <p class="text-[11px] text-slate-500 mt-0.5">Corte + Color</p>
+
+                <div class="space-y-3 border-b border-slate-100 pb-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs text-slate-400 font-semibold">Nombre</p>
+                            <p class="text-sm font-bold text-slate-800">Elizabeth Wilson</p>
+                            <p class="text-[11px] text-slate-500 mt-0.5">Corte + Color</p>
+                        </div>
+                        <div class="text-right">
+                            <input type="number" id="tpv-precio-base" value="215.00" oninput="calcularTotalTPV()" class="w-24 p-1.5 text-right font-bold text-slate-800 border border-slate-200 rounded-xl text-sm bg-slate-50">
+                        </div>
                     </div>
-                    <input type="number" id="tpv-precio-base" value="215.00" oninput="calcularTotalTPV()" class="w-24 p-1.5 text-right font-bold text-slate-800 border border-slate-200 rounded-xl text-sm bg-slate-50">
                 </div>
+
+                <div class="space-y-3 border-b border-slate-100 pb-4 text-xs">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 font-medium">Descuento Valor</span>
+                        <div class="flex items-center space-x-1">
+                            <span>-</span>
+                            <input type="number" id="tpv-descuento" value="15.00" oninput="calcularTotalTPV()" class="w-20 p-1 text-right border border-slate-200 rounded-lg bg-slate-50 font-medium">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 font-medium">Tasa / Impuesto (%)</span>
+                        <div class="flex items-center space-x-1">
+                            <span>-</span>
+                            <input type="number" id="tpv-tasa-porc" value="6.98" oninput="calcularTotalTPV()" class="w-20 p-1 text-right border border-slate-200 rounded-lg bg-slate-50 font-medium">
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-500 font-medium">Sugerencia Propina</span>
+                        <input type="number" id="tpv-propina" value="20.00" oninput="calcularTotalTPV()" class="w-20 p-1 text-right border border-slate-200 rounded-lg bg-slate-50 font-medium">
+                    </div>
+                </div>
+
                 <div class="p-4 bg-teal-50/60 border border-teal-100 rounded-2xl flex justify-between items-center">
-                    <span class="text-xs font-bold text-teal-900 uppercase">Total a Pagar</span>
+                    <div>
+                        <span class="text-xs font-bold text-teal-900 uppercase">Total a Pagar</span>
+                        <p class="text-[10px] text-teal-700">Impuestos incluidos</p>
+                    </div>
                     <span class="text-xl font-black text-teal-900" id="tpv-total-final">220.00 €</span>
                 </div>
-                <button onclick="procesarPagoFinal()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-black py-3 rounded-2xl transition text-sm shadow-md cursor-pointer">
-                    Procesar Pago
+            </div>
+
+            <!-- BARRA INFERIOR TPV RESTAURADA -->
+            <div class="grid grid-cols-3 gap-2 bg-slate-900 p-2 rounded-3xl shadow-lg sticky bottom-4 z-40">
+                <button onclick="switchTab('dashboard')" class="py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl text-xs font-bold flex flex-col items-center justify-center cursor-pointer transition">
+                    <i class="fa-solid fa-rotate-left mb-1"></i><span>Volver</span>
+                </button>
+                <button onclick="alert('Venta eliminada')" class="py-3 bg-slate-800 hover:bg-slate-700 text-rose-400 rounded-2xl text-xs font-bold flex flex-col items-center justify-center cursor-pointer transition">
+                    <i class="fa-solid fa-trash mb-1"></i><span>Eliminar</span>
+                </button>
+                <button onclick="procesarPagoFinal()" class="py-3 bg-amber-500 hover:bg-amber-600 text-slate-900 rounded-2xl text-xs font-black flex flex-col items-center justify-center cursor-pointer transition shadow-md">
+                    <i class="fa-solid fa-dollar-sign mb-1 text-sm"></i><span>Pago</span>
                 </button>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 5: CATÁLOGO DE SERVICIOS OPERATIVO ================= -->
+        <!-- ================= MÓDULO 5: CATÁLOGO CON BOTONES NUEVO SERVICIO / PRODUCTO ================= -->
         <section id="tab-catalogo" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <div>
-                    <h3 class="font-bold text-slate-900">Catálogo de Servicios y Precios</h3>
-                    <p class="text-xs text-slate-500">Gestión de cortes, peinados y tratamientos</p>
+                    <h3 class="font-bold text-slate-900">Catálogo de Servicios y Productos</h3>
+                    <p class="text-xs text-slate-500">Gestión de precios y artículos</p>
                 </div>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
+                <div class="flex space-x-2">
+                    <button onclick="alert('Ventana para añadir nuevo servicio')" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition cursor-pointer">+ Nuevo Servicio</button>
+                    <button onclick="alert('Ventana para añadir nuevo producto')" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-1.5 px-3 rounded-xl text-xs transition cursor-pointer">+ Nuevo Producto</button>
+                    <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
+                </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex justify-between items-center">
                     <div>
                         <h4 class="font-bold text-sm text-slate-800">Corte Mujer + Peinado</h4>
-                        <p class="text-xs text-slate-400">Duración: 45 min</p>
+                        <p class="text-xs text-slate-400">Servicio de Peluquería</p>
                     </div>
                     <span class="font-black text-teal-600 bg-teal-50 px-3 py-1 rounded-xl text-xs">35.00 €</span>
-                </div>
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-sm text-slate-800">Corte de Barba Clásico</h4>
-                        <p class="text-xs text-slate-400">Duración: 25 min</p>
-                    </div>
-                    <span class="font-black text-teal-600 bg-teal-50 px-3 py-1 rounded-xl text-xs">15.00 €</span>
-                </div>
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-sm text-slate-800">Trabajo Técnico Color</h4>
-                        <p class="text-xs text-slate-400">Duración: 90 min</p>
-                    </div>
-                    <span class="font-black text-teal-600 bg-teal-50 px-3 py-1 rounded-xl text-xs">60.00 €</span>
                 </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 6: ESTADÍSTICAS OPERATIVO ================= -->
+        <!-- ================= MÓDULO 6: ESTADÍSTICAS INTERACTIVAS Y GRÁFICOS ================= -->
         <section id="tab-estadisticas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
                 <div>
                     <h3 class="font-bold text-slate-900">Estadísticas y Rendimiento</h3>
-                    <p class="text-xs text-slate-500">Resumen de actividad del salón</p>
+                    <p class="text-xs text-slate-500">Gráficos de ingresos y analíticas</p>
                 </div>
-                <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
+                <div class="flex space-x-2">
+                    <div class="flex bg-slate-100 p-1 rounded-xl">
+                        <button onclick="cambiarFiltroEstadistica('diario')" id="btn-est-diario" class="px-3 py-1 bg-white text-slate-800 rounded-lg text-xs font-bold shadow-xs">Diario</button>
+                        <button onclick="cambiarFiltroEstadistica('mensual')" id="btn-est-mensual" class="px-3 py-1 text-slate-500 rounded-lg text-xs font-medium">Mensual</button>
+                    </div>
+                    <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
+                </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div class="p-5 bg-white border border-slate-100 rounded-3xl shadow-sm text-center space-y-1">
-                    <p class="text-xs text-slate-400 font-bold uppercase">Ingresos del Día</p>
-                    <p class="text-xl font-black text-emerald-600">435.00 €</p>
+
+            <!-- Gráficos visuales simulados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-3">
+                    <h4 class="font-bold text-xs text-slate-500 uppercase">Distribución por Género / Público</h4>
+                    <div class="space-y-2">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1"><span>Femenino (50%)</span><span>5 citas</span></div>
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-amber-400 h-full w-[50%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1"><span>Masculino (30%)</span><span>3 citas</span></div>
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-blue-500 h-full w-[30%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1"><span>Desconocido (20%)</span><span>2 citas</span></div>
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-rose-500 h-full w-[20%]"></div></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-5 bg-white border border-slate-100 rounded-3xl shadow-sm text-center space-y-1">
-                    <p class="text-xs text-slate-400 font-bold uppercase">Citas Completadas</p>
-                    <p class="text-xl font-black text-blue-600">12 Citas</p>
-                </div>
-                <div class="p-5 bg-white border border-slate-100 rounded-3xl shadow-sm text-center space-y-1">
-                    <p class="text-xs text-slate-400 font-bold uppercase">Nuevos Clientes</p>
-                    <p class="text-xl font-black text-purple-600">+3 Clientes</p>
+
+                <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 space-y-3">
+                    <h4 class="font-bold text-xs text-slate-500 uppercase">Tipos de Pago</h4>
+                    <div class="space-y-2">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1"><span>Efectivo (33%)</span><span>143.50 €</span></div>
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-amber-500 h-full w-[33%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1"><span>Tarjeta VISA (33%)</span><span>143.50 €</span></div>
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-rose-600 h-full w-[33%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1"><span>Bizum (33%)</span><span>143.50 €</span></div>
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden"><div class="bg-sky-400 h-full w-[33%]"></div></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 7: MARKETING OPERATIVO ================= -->
+        <!-- ================= MÓDULO 7: MARKETING ================= -->
         <section id="tab-marketing" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Campañas de Marketing</h3>
-                    <p class="text-xs text-slate-500">Fidelización y avisos a clientes por WhatsApp</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Marketing y Fidelización</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-3">
-                <div class="p-4 bg-rose-50/50 border border-rose-100 rounded-2xl flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-xs text-rose-900">Recordatorio automático de citas</h4>
-                        <p class="text-[11px] text-rose-700">Envía un WhatsApp 24h antes de la cita del cliente.</p>
-                    </div>
-                    <span class="text-xs bg-emerald-500 text-white px-3 py-1 rounded-xl font-bold">Activo</span>
-                </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <p class="text-xs text-slate-500">Campañas automáticas de WhatsApp activas para recordar citas a clientes.</p>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 8: INFORMES OPERATIVO ================= -->
+        <!-- ================= MÓDULO 8: INFORMES ================= -->
         <section id="tab-informes" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Informes de Ventas</h3>
-                    <p class="text-xs text-slate-500">Desglose por tipo de pago y estilista</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Informes Financieros</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 space-y-3">
-                <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-100">
-                    <span class="text-slate-500 font-semibold">Efectivo (33%)</span>
-                    <span class="font-bold text-slate-800">143.50 €</span>
-                </div>
-                <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-100">
-                    <span class="text-slate-500 font-semibold">Tarjeta / VISA (33%)</span>
-                    <span class="font-bold text-slate-800">143.50 €</span>
-                </div>
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-slate-500 font-semibold">Bizum (33%)</span>
-                    <span class="font-bold text-slate-800">143.50 €</span>
-                </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
+                <p class="text-xs text-slate-500">Resumen detallado de ingresos por estilista y servicios realizados.</p>
             </div>
         </section>
 
-        <!-- ================= MÓDULO 9: CONTABILIDAD Y GASTOS FIJOS OPERATIVO ================= -->
+        <!-- ================= MÓDULO 9: CONTABILIDAD ================= -->
         <section id="tab-finanzas" class="tab-content hidden space-y-4">
             <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 flex justify-between items-center">
-                <div>
-                    <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
-                    <p class="text-xs text-slate-500">Control por plazos personalizados</p>
-                </div>
+                <h3 class="font-bold text-slate-900">Contabilidad & Gastos Fijos</h3>
                 <button onclick="switchTab('dashboard')" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-semibold cursor-pointer">Menú</button>
             </div>
-            <div class="space-y-3">
-                <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                    <div>
-                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">Plazo: 30 Días</span>
-                        <h4 class="font-bold text-sm text-slate-800 mt-1">Alquiler del Local</h4>
-                        <p class="text-xs text-slate-400">Meta: 600.00 € | Aporte porcentual diario</p>
-                    </div>
-                    <div class="w-full md:w-40 bg-slate-100 rounded-full h-2.5">
-                        <div class="bg-amber-500 h-2.5 rounded-full" style="width: 35%"></div>
-                    </div>
+            <div class="p-4 bg-white border border-slate-100 rounded-3xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h4 class="font-bold text-sm text-slate-800">Alquiler del Local (30 Días)</h4>
+                    <p class="text-xs text-slate-400">Meta: 600.00 €</p>
                 </div>
+                <div class="w-32 bg-slate-100 rounded-full h-2.5"><div class="bg-amber-500 h-2.5 rounded-full" style="width: 35%"></div></div>
             </div>
         </section>
 
@@ -367,11 +440,11 @@
 
     </main>
 
-    <!-- VENTANA MODAL PARA NUEVO CLIENTE (ACCESIBLE DESDE CALENDARIO Y CLIENTES) -->
+    <!-- VENTANA MODAL: NUEVO CLIENTE CON FICHA TÉCNICA -->
     <div id="modal-nuevo-cliente" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md p-6 rounded-3xl shadow-xl space-y-4">
             <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                <h3 class="font-bold text-slate-900 text-base">Registrar Nuevo Cliente</h3>
+                <h3 class="font-bold text-slate-900 text-base">Registrar Nuevo Cliente & Ficha Técnica</h3>
                 <button onclick="cerrarModalCliente()" class="text-slate-400 hover:text-slate-700 text-sm font-bold cursor-pointer">✕</button>
             </div>
             <div class="space-y-3">
@@ -383,15 +456,41 @@
                     <label class="block text-xs font-semibold text-slate-600 mb-1">Teléfono</label>
                     <input type="tel" id="cli-telefono" placeholder="Ej. 600112233" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50">
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1">Notas / Tratamientos de Color</label>
-                    <textarea id="cli-notas" placeholder="Ej. Melena 7.1" class="w-full p-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50"></textarea>
+                <div class="p-3 bg-teal-50/50 border border-teal-100 rounded-2xl space-y-2">
+                    <p class="text-xs font-bold text-teal-900">Ficha Técnica Inicial</p>
+                    <input type="text" id="cli-trabajo" placeholder="Trabajo (Ej. Corte + Color)" class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-white">
+                    <input type="text" id="cli-color" placeholder="Fórmula de Color (Ej. Melena 7.1)" class="w-full p-2 rounded-xl border border-slate-200 text-xs bg-white">
                 </div>
             </div>
             <div class="flex space-x-2 pt-2">
                 <button onclick="cerrarModalCliente()" class="flex-1 bg-slate-100 text-slate-700 font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Cancelar</button>
                 <button onclick="guardarCliente()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Guardar Cliente</button>
             </div>
+        </div>
+    </div>
+
+    <!-- VENTANA MODAL: FICHA TÉCNICA DETALLADA -->
+    <div id="modal-ficha-tecnica" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md p-6 rounded-3xl shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 class="font-bold text-slate-900 text-base" id="ficha-titulo">Ficha Técnica de Cliente</h3>
+                <button onclick="cerrarFichaTecnica()" class="text-slate-400 hover:text-slate-700 text-sm font-bold cursor-pointer">✕</button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div class="p-3 bg-slate-50 rounded-2xl space-y-1">
+                    <p class="text-slate-500 font-semibold">Último Trabajo:</p>
+                    <p class="font-bold text-slate-800 text-sm" id="ficha-trabajo">-</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-2xl space-y-1">
+                    <p class="text-slate-500 font-semibold">Fórmula de Color / Notas:</p>
+                    <p class="font-bold text-teal-700 text-sm" id="ficha-color">-</p>
+                </div>
+                <div class="p-3 bg-slate-50 rounded-2xl space-y-1">
+                    <p class="text-slate-500 font-semibold">Precio / Historial:</p>
+                    <p class="font-bold text-emerald-600 text-sm" id="ficha-precio">-</p>
+                </div>
+            </div>
+            <button onclick="cerrarFichaTecnica()" class="w-full bg-slate-900 text-white font-bold py-2.5 rounded-xl text-xs cursor-pointer">Cerrar</button>
         </div>
     </div>
 
@@ -438,11 +537,14 @@
         function cambiarVistaAgenda(vista) {
             ['columna', 'dia', 'lista'].forEach(v => {
                 const btn = document.getElementById('btn-v-' + v);
-                if(btn) {
+                const panel = document.getElementById('vista-' + v);
+                if(btn && panel) {
                     if(v === vista) {
                         btn.className = "px-4 py-1.5 bg-white text-slate-800 rounded-xl text-xs font-bold shadow-xs cursor-pointer transition";
+                        panel.classList.remove('hidden');
                     } else {
                         btn.className = "px-4 py-1.5 text-slate-500 rounded-xl text-xs font-medium hover:text-slate-800 cursor-pointer transition";
+                        panel.classList.add('hidden');
                     }
                 }
             });
@@ -471,8 +573,19 @@
                 alert("Por favor introduce el nombre del cliente.");
                 return;
             }
-            alert("¡Cliente " + nombre + " registrado con éxito!");
+            alert("¡Cliente " + nombre + " y su ficha técnica registrados con éxito!");
             cerrarModalCliente();
+        }
+
+        function abrirFichaTecnica(nombre, trabajo, color, precio) {
+            document.getElementById('ficha-titulo').innerText = "Ficha Técnica: " + nombre;
+            document.getElementById('ficha-trabajo').innerText = trabajo;
+            document.getElementById('ficha-color').innerText = color;
+            document.getElementById('ficha-precio').innerText = precio;
+            document.getElementById('modal-ficha-tecnica').classList.remove('hidden');
+        }
+        function cerrarFichaTecnica() {
+            document.getElementById('modal-ficha-tecnica').classList.add('hidden');
         }
 
         function toggleCalendarSync() {
@@ -482,13 +595,36 @@
 
         function calcularTotalTPV() {
             const base = parseFloat(document.getElementById('tpv-precio-base').value) || 0;
-            document.getElementById('tpv-total-final').innerText = (base + 5).toFixed(2) + " €";
+            const descuento = parseFloat(document.getElementById('tpv-descuento').value) || 0;
+            const tasaPorc = parseFloat(document.getElementById('tpv-tasa-porc').value) || 0;
+            const propina = parseFloat(document.getElementById('tpv-propina').value) || 0;
+
+            const subtotal = Math.max(0, base - descuento);
+            const valorTasa = subtotal * (tasaPorc / 100);
+            const totalFinal = subtotal + valorTasa + propina;
+
+            document.getElementById('tpv-total-final').innerText = totalFinal.toFixed(2) + " €";
         }
 
         function procesarPagoFinal() {
-            alert("¡Pago procesado con éxito!");
+            const total = document.getElementById('tpv-total-final').innerText;
+            alert("¡Pago procesado con éxito por un importe de " + total + "!");
             switchTab('dashboard');
         }
+
+        function cambiarFiltroEstadistica(tipo) {
+            const btnD = document.getElementById('btn-est-diario');
+            const btnM = document.getElementById('btn-est-mensual');
+            if(tipo === 'diario') {
+                btnD.className = "px-3 py-1 bg-white text-slate-800 rounded-lg text-xs font-bold shadow-xs";
+                btnM.className = "px-3 py-1 text-slate-500 rounded-lg text-xs font-medium";
+            } else {
+                btnM.className = "px-3 py-1 bg-white text-slate-800 rounded-lg text-xs font-bold shadow-xs";
+                btnD.className = "px-3 py-1 text-slate-500 rounded-lg text-xs font-medium";
+            }
+        }
+
+        calcularTotalTPV();
     </script>
 </body>
 </html>
